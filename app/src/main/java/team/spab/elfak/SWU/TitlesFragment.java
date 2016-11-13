@@ -24,13 +24,9 @@ import java.util.*;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import team.spab.elfak.SWU.swapi.models.Film;
-import team.spab.elfak.SWU.swapi.models.People;
-import team.spab.elfak.SWU.swapi.models.Planet;
-import team.spab.elfak.SWU.swapi.models.SWModelList;
-import team.spab.elfak.SWU.swapi.models.Species;
-import team.spab.elfak.SWU.swapi.models.Starship;
-import team.spab.elfak.SWU.swapi.models.Vehicle;
+import team.spab.elfak.SWU.InfoFragments.*;
+import team.spab.elfak.SWU.swapi.APIConstants;
+import team.spab.elfak.SWU.swapi.models.*;
 import team.spab.elfak.SWU.swapi.sw.StarWars;
 import team.spab.elfak.SWU.swapi.sw.StarWarsApi;
 import team.spab.elfak.SWU.swapi.utils.SWUtils;
@@ -45,7 +41,6 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private int id;
     private int current;
     private View listView;
-    public ArrayList<String> urlList;
     public ArrayList<String> list;
     private ArrayAdapter<String> adapter;
     private Timer timer;
@@ -94,12 +89,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<Film>> allFilmsCallback = new Callback<SWModelList<Film>>() {
         @Override
         public void success(SWModelList<Film> filmSWModelList, Response response) {
+            APIConstants.filmList=filmSWModelList;
             int numOfFilms = filmSWModelList.count;
             for(int i = 0; i< numOfFilms; i++)
-            {
                 list.add(filmSWModelList.results.get(i).title);
-                urlList.add(filmSWModelList.results.get(i).url);
-            }
             previous= SWUtils.pageUrlToNumber(filmSWModelList.previous);
             next=SWUtils.pageUrlToNumber(filmSWModelList.next);
             checkVisibility();
@@ -122,13 +115,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<People>> allPeopleCallback = new Callback<SWModelList<People>>() {
         @Override
         public void success(SWModelList<People> peopleSWModelList, Response response) {
+            APIConstants.peopleList=peopleSWModelList;
             int numOfPeople = peopleSWModelList.results.size();
             for(int i = 0; i< numOfPeople; i++)
-            {
                 list.add(peopleSWModelList.results.get(i).name);
-                urlList.add(peopleSWModelList.results.get(i).url);
-            }
-
             previous= SWUtils.pageUrlToNumber(peopleSWModelList.previous);
             next=SWUtils.pageUrlToNumber(peopleSWModelList.next);
             checkVisibility();
@@ -152,13 +142,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<Planet>> allPlanetsCallback = new Callback<SWModelList<Planet>>() {
         @Override
         public void success(SWModelList<Planet> planetSWModelList, Response response) {
+            APIConstants.planetList=planetSWModelList;
             int numOfPlanets = planetSWModelList.results.size();
             for(int i = 0; i< numOfPlanets; i++)
-            {
                 list.add(planetSWModelList.results.get(i).name);
-                urlList.add(planetSWModelList.results.get(i).url);
-            }
-
             previous= SWUtils.pageUrlToNumber(planetSWModelList.previous);
             next=SWUtils.pageUrlToNumber(planetSWModelList.next);
             checkVisibility();
@@ -182,13 +169,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<Starship>> allStarshipsCallback = new Callback<SWModelList<Starship>>() {
         @Override
         public void success(SWModelList<Starship> starshipSWModelList, Response response) {
+            APIConstants.starshipList=starshipSWModelList;
             int numOfStarships = starshipSWModelList.results.size();
             for(int i = 0; i< numOfStarships; i++)
-            {
                 list.add(starshipSWModelList.results.get(i).name);
-                urlList.add(starshipSWModelList.results.get(i).url);
-            }
-
             previous= SWUtils.pageUrlToNumber(starshipSWModelList.previous);
             next=SWUtils.pageUrlToNumber(starshipSWModelList.next);
             checkVisibility();
@@ -213,13 +197,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<Vehicle>> allVehiclesCallback = new Callback<SWModelList<Vehicle>>() {
         @Override
         public void success(SWModelList<Vehicle> vehicleSWModelList, Response response) {
+            APIConstants.vehicleList=vehicleSWModelList;
             int numOfVehicles = vehicleSWModelList.results.size();
             for(int i = 0; i< numOfVehicles; i++)
-            {
                 list.add(vehicleSWModelList.results.get(i).name);
-                urlList.add(vehicleSWModelList.results.get(i).url);
-            }
-
             previous= SWUtils.pageUrlToNumber(vehicleSWModelList.previous);
             next=SWUtils.pageUrlToNumber(vehicleSWModelList.next);
             checkVisibility();
@@ -243,13 +224,10 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
     private Callback<SWModelList<Species>> allSpeciesCallback = new Callback<SWModelList<Species>>() {
         @Override
         public void success(SWModelList<Species> speciesSWModelList, Response response) {
+            APIConstants.speciesList=speciesSWModelList;
             int numOfSpecies = speciesSWModelList.results.size();
             for(int i = 0; i< numOfSpecies; i++)
-            {
                 list.add(speciesSWModelList.results.get(i).name);
-                urlList.add(speciesSWModelList.results.get(i).url);
-            }
-
             previous= SWUtils.pageUrlToNumber(speciesSWModelList.previous);
             next=SWUtils.pageUrlToNumber(speciesSWModelList.next);
             checkVisibility();
@@ -278,7 +256,6 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
         StarWarsApi.init();
         sw = StarWarsApi.getApi();
         list = new ArrayList<String>();
-        urlList = new ArrayList<String>();
         adapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
                 list);
@@ -397,6 +374,32 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getContext(),urlList.get(position),Toast.LENGTH_LONG).show();
+        FragmentManager manager = getFragmentManager();
+        switch (this.id) {
+            case R.id.nav_films:
+                FilmsFragment filmFragment = FilmsFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, filmFragment).addToBackStack(null).commit();
+                break;
+            case R.id.nav_people:
+                PeopleFragment peopleFragment = PeopleFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, peopleFragment).addToBackStack(null).commit();
+                break;
+            case R.id.nav_planets:
+                PlanetsFragment planetFragment = PlanetsFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, planetFragment).addToBackStack(null).commit();
+                break;
+            case R.id.nav_species:
+                SpeciesFragment speciesFragment = SpeciesFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, speciesFragment).addToBackStack(null).commit();
+                break;
+            case R.id.nav_starships:
+                StarshipsFragment starshipsFragment = StarshipsFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, starshipsFragment).addToBackStack(null).commit();
+                break;
+            case R.id.nav_vehicle:
+                VehicleFragment vehicleFragment = VehicleFragment.newInstance(position);
+                manager.beginTransaction().replace(R.id.content_main, vehicleFragment).addToBackStack(null).commit();
+                break;
+        }
     }
 }

@@ -18,6 +18,9 @@ public class Film implements Serializable {
     @SerializedName("opening_crawl")
     public String openingCrawl;
 
+    @SerializedName("release_date")
+    public String releaseDate;
+
     public String director;
     public String producer;
     public String url;

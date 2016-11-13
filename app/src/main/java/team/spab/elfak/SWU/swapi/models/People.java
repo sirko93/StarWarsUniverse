@@ -27,6 +27,9 @@ public class People implements Serializable {
 
     public String mass;
 
+    @SerializedName("eye_color")
+    public String eyeColor;
+
     @SerializedName("skin_color")
     public String skinColor;
 
