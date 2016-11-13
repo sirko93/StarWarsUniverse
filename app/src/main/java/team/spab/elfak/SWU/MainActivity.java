@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
         TitlesFragment titlesFragment = TitlesFragment.newInstance(id,1);
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.content_main, titlesFragment).commit();
+        manager.beginTransaction().replace(R.id.content_main, titlesFragment).addToBackStack(null).commit();
 
         /*if (id == R.id.nav_films) {
 

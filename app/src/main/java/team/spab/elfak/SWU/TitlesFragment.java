@@ -378,27 +378,27 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
         switch (this.id) {
             case R.id.nav_films:
                 FilmsFragment filmFragment = FilmsFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, filmFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, filmFragment).addToBackStack(null).commit();
                 break;
             case R.id.nav_people:
                 PeopleFragment peopleFragment = PeopleFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, peopleFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, peopleFragment).addToBackStack(null).commit();
                 break;
             case R.id.nav_planets:
                 PlanetsFragment planetFragment = PlanetsFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, planetFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, planetFragment).addToBackStack(null).commit();
                 break;
             case R.id.nav_species:
                 SpeciesFragment speciesFragment = SpeciesFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, speciesFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, speciesFragment).addToBackStack(null).commit();
                 break;
             case R.id.nav_starships:
                 StarshipsFragment starshipsFragment = StarshipsFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, starshipsFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, starshipsFragment).addToBackStack(null).commit();
                 break;
             case R.id.nav_vehicle:
                 VehicleFragment vehicleFragment = VehicleFragment.newInstance(position);
-                manager.beginTransaction().replace(R.id.content_main, vehicleFragment).addToBackStack(null).commit();
+                manager.beginTransaction().add(R.id.content_main, vehicleFragment).addToBackStack(null).commit();
                 break;
         }
     }
