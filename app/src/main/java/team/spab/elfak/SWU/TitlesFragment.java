@@ -308,7 +308,7 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
                                     break;
                             }
                         }
-                    }, 300);
+                    }, 500);
                     bNext.setVisibility(View.INVISIBLE);
                     bPrevious.setVisibility(View.INVISIBLE);
                 }
