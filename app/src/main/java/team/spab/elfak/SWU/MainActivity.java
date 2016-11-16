@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import team.spab.elfak.SWU.InfoFragments.HintFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -99,7 +101,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_vehicle) {
 
         }*/
-
+        View infoView = findViewById(R.id.content_info);
+        if (infoView != null) {
+            HintFragment hintFragment = new HintFragment();
+            manager.beginTransaction().replace(R.id.content_info,hintFragment).commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
