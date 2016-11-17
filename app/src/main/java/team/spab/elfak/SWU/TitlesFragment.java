@@ -407,7 +407,11 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
 
         if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_PORTRAIT)
             transaction.addToBackStack(null);
-
+        else
+        {
+            if(manager.findFragmentById(R.id.content_info) instanceof HintFragment)
+                transaction.addToBackStack(null);
+        }
         transaction.commit();
         /*
         if (infoView == null){

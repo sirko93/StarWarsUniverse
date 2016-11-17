@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -42,8 +43,12 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
+
+        TitlesFragment titlesFragment = TitlesFragment.newInstance(R.id.nav_films,1);
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.content_main, titlesFragment).commit();
+
     }
 
     @Override
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity
 
         TitlesFragment titlesFragment = TitlesFragment.newInstance(id,1);
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.content_main, titlesFragment).addToBackStack(null).commit();
+        manager.beginTransaction().replace(R.id.content_main, titlesFragment).commit();
 
         /*if (id == R.id.nav_films) {
 
@@ -101,11 +106,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_vehicle) {
 
         }*/
-        View infoView = findViewById(R.id.content_info);
-        if (infoView != null) {
-            HintFragment hintFragment = new HintFragment();
-            manager.beginTransaction().replace(R.id.content_info,hintFragment).commit();
-        }
+        HintFragment hintFragment = new HintFragment();
+        manager.beginTransaction().replace(R.id.content_info,hintFragment).commit();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
