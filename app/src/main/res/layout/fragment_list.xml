@@ -18,7 +18,8 @@
             android:singleLine="true"
             android:textSize="18sp"
             android:hint="Search"
-            android:layout_height="45dp" />
+            android:layout_height="45dp"
+            android:selectAllOnFocus="false" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -40,7 +41,7 @@
                 android:layout_height="45dp">
 
                 <Button
-                    android:text="Previous page"
+                    android:text="Previous"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/button_previous"
@@ -48,7 +49,7 @@
                     android:layout_gravity="fill" />
 
                 <Button
-                    android:text="Next page"
+                    android:text="Next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/button_next"
