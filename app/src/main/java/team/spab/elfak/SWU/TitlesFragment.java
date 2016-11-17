@@ -412,7 +412,11 @@ public class TitlesFragment extends ListFragment implements AdapterView.OnItemCl
                 Configuration.SCREENLAYOUT_SIZE_MASK) ==
                 Configuration.SCREENLAYOUT_SIZE_LARGE))
             transaction.addToBackStack(null);
-
+        else
+        {
+            if(manager.findFragmentById(R.id.content_info) instanceof HintFragment)
+                transaction.addToBackStack(null);
+        }
         transaction.commit();
 
     }
