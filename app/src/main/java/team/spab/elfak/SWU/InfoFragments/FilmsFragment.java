@@ -42,6 +42,8 @@ public class FilmsFragment extends Fragment {
         if (getArguments() != null) {
             id = getArguments().getInt(ARG_ID);
         }
+
+
     }
 
     @Override
