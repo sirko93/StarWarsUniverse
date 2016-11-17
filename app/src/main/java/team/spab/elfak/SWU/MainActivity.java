@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity
         TitlesFragment titlesFragment = TitlesFragment.newInstance(R.id.nav_films,1);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main, titlesFragment).commit();
-
     }
 
     @Override
@@ -106,8 +105,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_vehicle) {
 
         }*/
-        HintFragment hintFragment = new HintFragment();
-        manager.beginTransaction().replace(R.id.content_info,hintFragment).commit();
+        if(findViewById(R.id.content_info)!=null) {
+            HintFragment hintFragment = new HintFragment();
+            manager.beginTransaction().replace(R.id.content_info, hintFragment).commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
